@@ -15,7 +15,7 @@ p {
 .container {
   min-width: 320px;
   max-width: 375px;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 40px 16px;
   background-repeat: no-repeat;
