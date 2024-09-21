@@ -1,8 +1,12 @@
 const CARDS = document.querySelector('.events-list');
 const PAGES = document.querySelector('.pagination-list');
 
+
 let page = 1;
-let currentPages = 1;
+let eventsList = [];
+let eventId;
+
+markUpEvents(page);
 
 async function getEvents(page) {
     try {
@@ -14,8 +18,6 @@ async function getEvents(page) {
         console.log(error);
     }
 };
-
-let eventsList = [];
 
 function markUpEvents(page) {
     getEvents(page)
@@ -31,14 +33,14 @@ function markUpEvents(page) {
             CARDS.innerHTML = null;
 
             const result = events.map((event) =>
-                `<li class="events-list-item">
+                `<li class="events-list-item" id=${event._id}>
                     <h3>${event.title}</h3>
                     <p>${event.event_date}</p>
                     <h4>${event.organizer}</h4>
                     <p>${event.description}</p>
-                    <div class="links">
-                        <a class="registerLink" href="/event-registration-page.html">Register</a>
-                        <a class="viewLink" href="#">View</a>
+                    <div class="links" id=${event._id}>
+                        <div class="registerLink">Register</div>
+                        <div class="viewLink">View</div>
                     </div>
                 </li>`)
                 .join('');
@@ -59,9 +61,18 @@ function markUpPages(totalPages) {
     return PAGES.innerHTML = pages;
 }
 
-markUpEvents(page);
- 
+function goToPage(e) {
+    eventId = e.target.parentNode.id
+    if (e.target.classList.value === 'registerLink') {
+        window.location.href = `/event-registration-page.html?event_id=${eventId}`; 
+    } 
+    else if (e.target.classList.value === 'viewLink') {
+        window.location.href = `/event-participants-page.html?event_id=${eventId}`; 
+    }
+}
 
 PAGES.addEventListener('click', event => {
     markUpEvents(event.target.firstChild.data);
 });
+
+CARDS.addEventListener('click', goToPage);

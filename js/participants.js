@@ -1,6 +1,6 @@
 const CARDS = document.querySelector('.participants-list');
 
-const event_id = '66ebfc286ce043528ee6893b'
+const event_id = new URLSearchParams(window.location.search).get('event_id');
 
 async function getParticipants() {
     try {

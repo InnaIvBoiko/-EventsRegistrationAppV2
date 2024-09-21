@@ -1,5 +1,6 @@
 const form = document.querySelector('.addParticipant');
-const event_id = '66ebfc286ce043528ee6893b'
+
+const event_id = new URLSearchParams(window.location.search).get('event_id');
 
 function addParticipant(participant) {
     const options = {
