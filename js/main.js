@@ -37,7 +37,7 @@ function markUpEvents(page) {
                     <h4>${event.organizer}</h4>
                     <p>${event.description}</p>
                     <div class="links">
-                        <a class="registerLink" href="#">Register</a>
+                        <a class="registerLink" href="/event-registration-page.html">Register</a>
                         <a class="viewLink" href="#">View</a>
                     </div>
                 </li>`)
