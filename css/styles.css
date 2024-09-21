@@ -48,6 +48,11 @@ p {
   justify-content: space-between;
 }
 
+.registerLink,
+.viewLink {
+  cursor: pointer;
+}
+
 .pagination-list {
   display: flex;
   gap: 24px;
